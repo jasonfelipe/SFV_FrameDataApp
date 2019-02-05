@@ -1,0 +1,22 @@
+{
+  "name": "sfv_framedataapp",
+  "version": "1.0.0",
+  "description": "Small Project using MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonfelipe/SFV_FrameDataApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonfelipe/SFV_FrameDataApp/issues"
+  },
+  "homepage": "https://github.com/jasonfelipe/SFV_FrameDataApp#readme",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}
