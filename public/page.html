@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Frame Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        tr {
+            border-bottom: 1px solid black;
+
+        }
+
+        td {
+            border-right: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1>FRAME DATA: RYU</h1>
+    </div>
+    <div id='container'>
+
+        <table>
+
+        </table>
+    </div>
+    <!-- <script type="text/javascript" src="./js/ryudata.js"></script> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $.get("/api/ryu", function (data) {
+            // console.log("Data from the server:", data);
+            // console.log("Data from the server, Move List: ", data);
+            // console.log(data);
+            data[0].forEach(element =>
+                tableCreator.createRows(element)
+            );
+        })
+
+
+
+        const tableCreator = {
+            createRows: function (item) {
+                let tRow = $("<tr>");
+                let move = $('<td>').text(item.move);
+                let startup = $('<td>').text(item.startup);
+                let active = $('<td>').text(item.active);
+                let recovery = $('<td>').text(item.recovery);
+                let onHit = $('<td>').text(item.onHit);
+                let onBlock = $('<td>').text(item.onBlock);
+                let damage = $('<td>').text(item.damage);
+                let stun = $('<td>').text(item.stun);
+                let type = $('<td>').text(item.attackType);
+
+                tRow.append(move, startup, active, recovery, onHit, onBlock, damage, stun, type);
+                $('table').append(tRow);
+
+                this.advantageCheck(item.onHit);
+            },
+
+            advantageCheck: function (number) {
+                // console.log(number);
+                $('table tr td').each(function () {
+
+                    if($(this).text() <= -1){
+                        $(this).css('background-color', '#FC9494');
+                    }
+                    if ($(this).text() <= -3){
+                        $(this).css('background-color', '#FF2929');
+                    }
+                    
+
+                });
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
