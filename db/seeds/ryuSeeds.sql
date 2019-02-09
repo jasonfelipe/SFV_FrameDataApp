@@ -85,4 +85,32 @@ values ("Somersault Throw (B + Throw)", 5, 3, 17, "KD", "KD", 150, 200, "T");
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
 values ("Mind's Eye (V Skill)", "3 (1)", 7, 32, null, null, null, null, null);
 
+-- V Reversal
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("Hashogeki (V Reversal)", "17","2", "24", "KD", "-2", "(60)", "0", "H");
 
+
+-- Special Moves
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("Light Shoryuken", "3","12", "19 + 11", "KD", "-24", "100(60)", "150(100)", "H");
+
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("Medium Shoryuken", "4","11", "26 + 13", "KD", "-32", "120(60)", "150(100)", "H");
+
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("Heavy Shoryuken", "5","10", "29 + 15", "KD", "-36", "130(60)", "150(100)", "H");
+
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("EX Shoryuken", "3","12", "29 + 15", "KD", "-37", "80 + 80", "200", "H + H");
+
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("Light Hadouken", "14", null, "33", "-1", "-6", "60", "100", "H");
+
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("Medium Hadouken", "14", null, "33", "-1", "-6", "60", "100", "H");
+
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("Heavy Hadouken", "14", null, "33", "-1", "-6", "60", "100", "H");
+
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType)
+values ("EX Hadouken", "11", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H");

@@ -52,8 +52,6 @@
             );
         })
 
-
-
         const tableCreator = {
             createRows: function (item) {
                 let tRow = $("<tr>");
@@ -83,7 +81,10 @@
                     if ($(this).text() <= -3){
                         $(this).css('background-color', '#FF2929');
                     }
-                    
+
+                    if ($(this).text() == 'null'){
+                        $(this).text('~');
+                    }
 
                 });
             }
