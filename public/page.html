@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+
         h1 {
             text-align: center;
+        }
+
+        .modal-header{
+            margin: 0 auto;
         }
 
         table {
             border: 1px solid black;
             margin: 0 auto;
+        }
+
+        #topRow {
+            font-weight: 600;
+            background-color:aquamarine;
         }
 
         tr {
@@ -25,6 +35,13 @@
             border-right: 1px solid black;
             padding: 10px;
         }
+
+        #frameDataCol { 
+            white-space:pre-wrap; 
+        }
+
+
+
     </style>
 </head>
 
@@ -36,10 +53,47 @@
     <div id='container'>
 
         <table>
-
+            <tr id='topRow'>
+                <td>Move Name</td>
+                <td>Start Up</td>
+                <td>Active</td>
+                <td>Recovery</td>
+                <td>On Hit</td>
+                <td>On Block</td>
+                <td>Damage</td>
+                <td>Stun</td>
+                <td>Attack Type</td>
+            </tr>
         </table>
     </div>
-    <!-- <script type="text/javascript" src="./js/ryudata.js"></script> -->
+
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
+
+    <div id='info' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">...</h5>
+                </div>
+                <div class="modal-body">
+                    <div class='row'>
+                        <div id='frameDataCol' class='col-sm-6'>
+                            ...
+                        </div>
+                        <div id='moveImage' class='col-sm-6'>
+                            This Is Where a Gif of the Image Will Be!
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
@@ -68,24 +122,40 @@
                 tRow.append(move, startup, active, recovery, onHit, onBlock, damage, stun, type);
                 $('table').append(tRow);
 
-                this.advantageCheck(item.onHit);
-            },
 
+                //Regex to get rid of the indent spaces in this Template Literal, but also keeps the new line breaks.
+                let frameDataCol = `Start Up: ${item.startup}
+                    Active: ${item.active}
+                    Recovery: ${item.recovery}
+                    On Hit: ${item.onHit}
+                    On Block: ${item.onBlock}
+                    Damage: ${item.damage}
+                    Stun: ${item.stun}
+                    Attack Type: ${item.attackType}`.replace(/^(\s{2})+/gm, '');
+
+
+                this.advantageCheck(item.onHit);
+                $(move).css('cursor', 'pointer').attr('data-toggle', 'modal').attr('data-target', 'exampleModalCenter')
+                $(move).on('click', function () {
+                    $('#info').modal('toggle');
+                    $('.modal-title').text(item.move);
+                    $('#frameDataCol').text(frameDataCol)
+                });
+            },
             advantageCheck: function (number) {
                 // console.log(number);
                 $('table tr td').each(function () {
 
-                    if($(this).text() <= -1){
+                    if ($(this).text() <= -1) {
                         $(this).css('background-color', '#FC9494');
                     }
-                    if ($(this).text() <= -3){
+                    if ($(this).text() <= -3) {
                         $(this).css('background-color', '#FF2929');
                     }
 
-                    if ($(this).text() == 'null'){
+                    if ($(this).text() == 'null') {
                         $(this).text('~');
                     }
-
                 });
             }
         }
