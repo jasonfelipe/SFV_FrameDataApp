@@ -98,13 +98,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         $.get("/api/ryu", function (data) {
-            // console.log("Data from the server:", data);
-            // console.log("Data from the server, Move List: ", data);
-            // console.log(data);
+
+            //Our data is coming back as an array.
             data[0].forEach(element =>
                 tableCreator.createRows(element)
             );
-        })
+        });
 
         const tableCreator = {
             createRows: function (item) {
@@ -135,14 +134,14 @@
 
 
                 this.advantageCheck(item.onHit);
-                $(move).css('cursor', 'pointer').attr('data-toggle', 'modal').attr('data-target', 'exampleModalCenter')
+                $(move).css('cursor', 'pointer').attr('data-toggle', 'modal').attr('data-target', 'exampleModalCenter').css('')
                 $(move).on('click', function () {
                     $('#info').modal('toggle');
                     $('.modal-title').text(item.move);
-                    $('#frameDataCol').text(frameDataCol)
+                    $('#frameDataCol').text(frameDataCol);
                 });
             },
-            advantageCheck: function (number) {
+            advantageCheck: function () {
                 // console.log(number);
                 $('table tr td').each(function () {
 

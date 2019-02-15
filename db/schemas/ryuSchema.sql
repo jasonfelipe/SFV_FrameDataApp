@@ -15,6 +15,7 @@ create table ryu (
     damage varchar (100),
     stun varchar(100),
     attackType varchar (100),
+    cancels varchar(100),
     primary key (id)
     );
     
