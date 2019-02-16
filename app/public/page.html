@@ -98,7 +98,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         $.get("/api/ryu", function (data) {
-
+            console.log(data);
             //Our data is coming back as an array.
             data[0].forEach(element =>
                 tableCreator.createRows(element)
