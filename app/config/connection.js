@@ -1,4 +1,3 @@
-
 var Sequelize = require("sequelize");
 
 var sequelize = new Sequelize("sfv_framedatadb", "root", "root", {

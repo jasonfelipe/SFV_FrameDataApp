@@ -63,8 +63,12 @@ values ("Light Shoryuken", "3","12", "19 + 11", "KD", "-24", "100(60)", "150(100
 ("Light Tatsumaki Senpukyaku", "10", "2", "18 + 12", "KD", "-10", "90", "150", "H (Crouchable)", null),
 ("Medium Tatsumaki Senpukyaku", "12", "2 (16) 2 ", "14 + 16", "KD", "-10", "100", "150", "H (Crouchable)", null),
 ("Hard Tatsumaki Senpukyaku", "14", "2 (16) 2 (14) 2", "14 + 17", "KD", "-10", "110", "150", "H (Crouchable)", null),
-("EX Tatsumaki Senpukyaku", "10", "2 (4) 2 (5) 2 (3)3 (3) 2", "11+15", "KD", "-19", "28 * 5", "150", "H", null),
+("EX Tatsumaki Senpukyaku", "10", "2 (4) 2 (5) 2 (3) 3 (3) 2", "11+15", "KD", "-19", "28 * 5", "150", "H", null),
 ("Light Joudan Sokutou Geri", "16", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H", "vt1 vt2"),
 ("Medium Joudan Sokutou Geri", "18", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H", "vt1 vt2"),
 ("Heavy Joudan Sokutou Geri", "20", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H", "vt1 vt2"),
 ("EX Joudan Sokutou Geri", "18", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H", "vt1 vt2");
+
+-- Super
+insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels)
+values ("Shinkuu Hadouken", "4", null, "61", "KD", "-17", "320", "0", "H", null);
