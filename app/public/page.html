@@ -6,14 +6,13 @@
     <title>Frame Data</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css">
     <style>
-
         h1 {
             text-align: center;
         }
 
-        .modal-header{
+        .modal-header {
             margin: 0 auto;
         }
 
@@ -24,7 +23,7 @@
 
         #topRow {
             font-weight: 600;
-            background-color:aquamarine;
+            background-color: aquamarine;
         }
 
         tr {
@@ -37,12 +36,19 @@
             padding: 10px;
         }
 
-        #frameDataCol { 
-            white-space:pre-wrap; 
+        #frameDataCol {
+            white-space: pre-wrap;
         }
 
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-
+        #move-img {
+            margin-top: 25px;
+        }
     </style>
 </head>
 
@@ -70,7 +76,8 @@
 
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
 
-    <div id='info' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div id='info' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -78,12 +85,12 @@
                 </div>
                 <div class="modal-body">
                     <div class='row'>
-                        <div id='frameDataCol' class='col-sm-6'>
-                            ...
-                        </div>
-                        <div id='moveImage' class='col-sm-6'>
-                            This Is Where a Gif of the Image Will Be!
-                        </div>
+                        <div id='frame-data-col' class='col-sm-6'></div>
+                        <div id='move-notes' class='col-sm-6'></div>
+                    </div>
+
+                    <div class='row'>
+                        <img id='move-img' src='' alt='moveGif' class='center'>
                     </div>
 
                 </div>
@@ -99,7 +106,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         $.get("/api/ryu", function (data) {
-            console.log(data);
+            // console.log(data);
             //Our data is coming back as an array.
             data.forEach(element =>
                 tableCreator.createRows(element)
@@ -121,27 +128,57 @@
 
                 tRow.append(move, startup, active, recovery, onHit, onBlock, damage, stun, type);
                 $('table').append(tRow);
+                let frameDataList = $('<ul>');
+                let notesList = $('<ul>');
 
+                    //Regex to get rid of the indent spaces in this Template Literal, but also keeps the new line breaks.
+                    let frameDataCol = [`Start Up: ${item.startup}`,
+                    `Active: ${item.active}`,
+                    `Recovery: ${item.recovery}`,
+                    `On Hit: ${item.onHit}`,
+                    `On Block: ${item.onBlock}`,
+                    `Damage: ${item.damage}`,
+                    `Stun: ${item.stun}`,
+                    `Attack Type: ${item.attackType}`]
 
-                //Regex to get rid of the indent spaces in this Template Literal, but also keeps the new line breaks.
-                let frameDataCol = `Start Up: ${item.startup}
-                    Active: ${item.active}
-                    Recovery: ${item.recovery}
-                    On Hit: ${item.onHit}
-                    On Block: ${item.onBlock}
-                    Damage: ${item.damage}
-                    Stun: ${item.stun}
-                    Attack Type: ${item.attackType}`.replace(/^(\s{2})+/gm, '');
 
 
                 this.advantageCheck(item.onHit);
-                $(move).css('cursor', 'pointer').attr('data-toggle', 'modal').attr('data-target', 'exampleModalCenter').css('')
+
+
+                $(move).css('cursor', 'pointer').attr('data-toggle', 'modal');
                 $(move).on('click', function () {
                     $('#info').modal('toggle');
-                    $('.modal-title').text(item.move);
-                    $('#frameDataCol').text(frameDataCol);
+                    $('#frame-data-col').empty();
+                    $('#move-notes').empty();        
+                    $('.modal-title').html(item.move);
+
+                    frameDataList = $('<ul>')
+                    for (let f = 0; f < frameDataCol.length; f++) {
+                        frameDataList.append(`<li>${frameDataCol[f]}</li>`);
+                    }
+
+
+                    $('#frame-data-col').append(frameDataList);
+
+                    if (item.notes) {
+                        notesList = $('<ul>');
+                        let moveNotes = item.notes.split('. ')
+                        for (let b = 0; b < moveNotes.length; b++){
+                            notesList.append(`<li>${moveNotes[b]}</li>`);
+                        }
+                        $('#move-notes').append(notesList);
+                    }
+
+                    $('#move-img').attr('src', 'movegif');
+
+                    if (item.gif) {
+                        $('#move-img').attr('src', item.gif);
+                    }
+
                 });
             },
+
             advantageCheck: function () {
                 // console.log(number);
                 $('table tr td').each(function () {

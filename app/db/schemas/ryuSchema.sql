@@ -16,6 +16,8 @@ create table ryu (
     stun varchar(100),
     attackType varchar (100),
     cancels varchar(100),
+    notes varchar(255),
+    gif varchar (255),
     primary key (id)
     );
     
