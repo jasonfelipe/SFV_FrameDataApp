@@ -1,7 +1,3 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
-
 // Dependencies
 // =============================================================
 const Combos = require("../models/combos.js");
@@ -13,7 +9,7 @@ const Ryu = require("../models/ryu.js");
 // =============================================================
 module.exports = function (app) {
 
-    // Get all chirps
+    // Get Ryu's Data
     app.get("/api/ryu", function (req, res) {
 
         // console.log(res);
@@ -24,7 +20,7 @@ module.exports = function (app) {
 
     });
 
-  // Add a chirp
+  // Add a combo specifically to Ryu
   app.post("/api/ryu/combos", function(req, res) {
 
     console.log("Combo Data:");

@@ -4,8 +4,8 @@ values ("Stand Light Punch", 3, 2, 7, 4, 2, 30, 70, "H", "su sp chain vt1 vt2", 
 ("Stand Medium Punch", 5, 3, 10, 7, 1, 60, 100, "H", "su sp vt1 vt2", null, null),
 ("Stand Heavy Punch", 8, 3, 20, 3, -1, 90, 150, "H", "su sp(vt1/vt2) vt1 vt2", "Crush Counters (Ground: Airborne Spin, Airborne: Airborne Spin)", null),
 ("Stand Light Kick", 4, 3, 11, -1, -2, 30, 70, "H", "su sp vt1 vt2", null, "https://giphy.com/gifs/ryu-sfv-framedata-tsSjpo3RGxBFNDFVDB"),
-("Stand Medium Kick", 8, 3, 16, 2, -2, 60, 100, "H", "vt1 vt2", null, null),
-("Stand Heavy Kick", 10, 2, 20, 4, -1, 90, 150, "H", "vt1 vt2", "Crush Counters (Ground: Grounded Spin, Airborne: Airborne Spin). Crouchable", null);
+("Stand Medium Kick", 8, 3, 16, 2, -2, 60, 100, "H", "vt1 vt2", null, "https://media.giphy.com/media/ljtq4yk91KlClw8xv8/giphy.gif"),
+("Stand Heavy Kick", 10, 2, 20, 4, -1, 90, 150, "H", "vt1 vt2", "Crush Counters (Ground: Grounded Spin, Airborne: Airborne Spin). Crouchable", "https://media.giphy.com/media/vRMmq49NU24LAIkaRE/giphy.gif");
 
  -- Crouch Attacks
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
