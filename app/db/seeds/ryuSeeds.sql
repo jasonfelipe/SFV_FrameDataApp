@@ -1,45 +1,45 @@
 -- Stand Attacks
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
-values ("Stand Light Punch", 3, 2, 7, 4, 2, 30, 70, "H", "su sp chain vt1 vt2", null, null),
-("Stand Medium Punch", 5, 3, 10, 7, 1, 60, 100, "H", "su sp vt1 vt2", null, null),
-("Stand Heavy Punch", 8, 3, 20, 3, -1, 90, 150, "H", "su sp(vt1/vt2) vt1 vt2", "Crush Counters (Ground: Airborne Spin, Airborne: Airborne Spin)", null),
-("Stand Light Kick", 4, 3, 11, -1, -2, 30, 70, "H", "su sp vt1 vt2", null, "https://giphy.com/gifs/ryu-sfv-framedata-tsSjpo3RGxBFNDFVDB"),
+values ("Stand Light Punch", 3, 2, 7, 4, 2, 30, 70, "H", "su sp chain vt1 vt2", null, "https://media.giphy.com/media/2UGbsKQwDIagufpTXS/giphy.gif"),
+("Stand Medium Punch", 5, 3, 10, 7, 1, 60, 100, "H", "su sp vt1 vt2", null, "https://media.giphy.com/media/QNiYP1yB5HjGDwasmY/giphy.gif"),
+("Stand Heavy Punch", 8, 3, 20, 3, -1, 90, 150, "H", "su sp(vt1/vt2) vt1 vt2", "Crush Counters (Ground: Airborne Spin, Airborne: Airborne Spin)", "https://media.giphy.com/media/443Dse7cvCxYqgimNb/giphy.gif"),
+("Stand Light Kick", 4, 3, 11, -1, -2, 30, 70, "H", "su sp vt1 vt2", null, "https://media.giphy.com/media/tsSjpo3RGxBFNDFVDB/giphy.gif"),
 ("Stand Medium Kick", 8, 3, 16, 2, -2, 60, 100, "H", "vt1 vt2", null, "https://media.giphy.com/media/ljtq4yk91KlClw8xv8/giphy.gif"),
 ("Stand Heavy Kick", 10, 2, 20, 4, -1, 90, 150, "H", "vt1 vt2", "Crush Counters (Ground: Grounded Spin, Airborne: Airborne Spin). Crouchable", "https://media.giphy.com/media/vRMmq49NU24LAIkaRE/giphy.gif");
 
  -- Crouch Attacks
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
-values ("Crouch Light Punch", 4, 3, 5, 3, 2, 30, 70, "H", "su sp chain vt1 vt2", null, "https://giphy.com/gifs/ryu-sfv-framedata-AEscYroZub8WZr1sQK"),
-("Crouch Medium Punch", 6, 3, 12, 4, 2, 60, 100, "H", "su sp vt1 vt2", null, "https://giphy.com/gifs/ryu-sfv-framedata-E1T7ZLY6JwPnj7uzPR"),
-("Crouch Heavy Punch", 6, 4, 24, -7, -10, 90, 150, "H", "su sp vt1 vt2", "Forces Stand on Hit", "https://giphy.com/gifs/ryu-sfv-framedata-mWHhRG5CEGAcnmIznr"),
-("Crouch Light Kick", 4, 2, 7, 2, 1, 20, 70, "L", "su sp chain vt1 vt2", null, null),
-("Crouch Medium Kick", 7, 3, 13, 1, -3, 50, 100, "L", "su sp vt1 vt2",null, null),
-("Crouch Heavy Kick", 8, 2, 22, "KD", -11, 90, 150, "L", "vt1 vt2", null, null);
+values ("Crouch Light Punch", 4, 3, 5, 3, 2, 30, 70, "H", "su sp chain vt1 vt2", null, "https://media.giphy.com/media/AEscYroZub8WZr1sQK/giphy.gif"),
+("Crouch Medium Punch", 6, 3, 12, 4, 2, 60, 100, "H", "su sp vt1 vt2", null, "https://media.giphy.com/media/E1T7ZLY6JwPnj7uzPR/giphy.gif"),
+("Crouch Heavy Punch", 6, 4, 24, -7, -10, 90, 150, "H", "su sp vt1 vt2", "Forces Stand on Hit", "https://media.giphy.com/media/mWHhRG5CEGAcnmIznr/giphy.gif"),
+("Crouch Light Kick", 4, 2, 7, 2, 1, 20, 70, "L", "su sp chain vt1 vt2", null, "https://media.giphy.com/media/3BMlciJYNIUOjHGOg8/giphy.gif"),
+("Crouch Medium Kick", 7, 3, 13, 1, -3, 50, 100, "L", "su sp vt1 vt2",null, "https://media.giphy.com/media/1n4iwrSzFls6kJA4Mk/giphy.gif"),
+("Crouch Heavy Kick", 8, 2, 22, "KD", -11, 90, 150, "L", "vt1 vt2", null, "https://media.giphy.com/media/83cU4P9IRCSd51fYq6/giphy.gif");
 
 -- Jump Attacks
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
-values ("Jump Light Punch", 3, 6, null, null, null, 40, 70, "M", null, null, null),
-("Jump Medium Punch", 7, 8, null, null, null, "30 + 30", "50 + 50", "M + M", null, null, null),
-("Jump Heavy Punch", 7, 7, null, null, null, 90, 150, "M", null, null, null),
-("Jump Light Kick", 4, 6, null, null, null, 40, 70, "M", null, null, null),
-("Jump Medium Kick", 6, 4, null, null, null, 60, 100, "M", null, null, null),
-("Jump Heavy Kick", 9, 5, null, null, null, 90, 150, "M", null, null, null);
+values ("Jump Light Punch", 3, 6, null, null, null, 40, 70, "M", null, null, "https://media.giphy.com/media/MSi3kGiXDy8L4oDWXR/giphy.gif"),
+("Jump Medium Punch", 7, 8, null, null, null, "30 + 30", "50 + 50", "M + M", "Air Tatsumaki Only.", "Has Juggle Properties.", "https://media.giphy.com/media/557InipJTdWF6F4FTg/giphy.gif"),
+("Jump Heavy Punch", 7, 7, null, null, null, 90, 150, "M", null, null, "https://media.giphy.com/media/Asml6BhCaLLMQMo5lm/giphy.gif"),
+("Jump Light Kick", 4, 6, null, null, null, 40, 70, "M", null, null, "https://media.giphy.com/media/MuAtpokT6z2kTktlBK/giphy.gif"),
+("Jump Medium Kick", 6, 4, null, null, null, 60, 100, "M", null, null, "https://media.giphy.com/media/1jXGqXnX34H2JPwLJg/giphy.gif"),
+("Jump Heavy Kick", 9, 5, null, null, null, 90, 150, "M", null, null, "https://media.giphy.com/media/5oKrH7IUd7agdPai72/giphy.gif");
 
 -- Unique Moves
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
-values("Collarbone Breaker (F + MP)", 22, "1 & 3", 17, 1, -6, "30 + 30", "60 + 40", "M + M", null, null, null),
-("Solar Plexus Strike (F + HP)", 17, "2 (1) & 2", 18, 8, -2, "40 + 40", "75 + 75", "H + H", "su", null, null),
-("Axe Kick (B + HK)", 9, "3 (3) & 4", 16, 4, -2, "40 + 40", "60 + 90", "H + H", "vt1 vt2", "1st Hit Forces Stand on Hit", null),
-("Jodan Sanrengeki 1st (s.MP -> s.HP)", "5 + 9", 2, 28, -9, -16, "60 + 63", "100 + 90","H + H", "vt1 vt2", null, null),
-("Jodan Sanrengeki 2nd (s.MP -> s.HP -> s.HK)", "5 + 9 + 9", 2, 26, "KD", -7, "60 + 63 + 56", "100 + 90 + 80", "H + H + H", "vt1 vt2","Third Hit Crouchable on Block", null),
+values("Collarbone Breaker (F + MP)", 22, "1 & 3", 17, 1, -6, "30 + 30", "60 + 40", "M + M", null, null, "https://media.giphy.com/media/1dKSgzkiCrVfEADI4J/giphy.gif"),
+("Solar Plexus Strike (F + HP)", 17, "2 (1) & 2", 18, 8, -2, "40 + 40", "75 + 75", "H + H", "su", null, "https://media.giphy.com/media/2WdMXgtyaALQACqcAG/giphy.gif"),
+("Axe Kick (B + HK)", 9, "3 (3) & 4", 16, 4, -2, "40 + 40", "60 + 90", "H + H", "vt1 vt2", "1st Hit Forces Stand on Hit", "https://media.giphy.com/media/ZwDqZ68N4A10qmq7wT/giphy.gif"),
+("Jodan Sanrengeki 1st (s.MP -> s.HP)", "5 + 9", 2, 28, -9, -16, "60 + 63", "100 + 90","H + H", "vt1 vt2", null, "https://media.giphy.com/media/8cBcmCbno19GbfCjMx/giphy.gif"),
+("Jodan Sanrengeki 2nd (s.MP -> s.HP -> s.HK)", "5 + 9 + 9", 2, 26, "KD", -7, "60 + 63 + 56", "100 + 90 + 80", "H + H + H", "vt1 vt2","Third Hit Crouchable on Block", "https://media.giphy.com/media/2mFEt1wgnUIimRYZso/giphy.gif"),
 ("Jodan Nirengeki (s.HP -> s.HK)", "8 + 9", 2, 26, "KD", -7, "90 + 63", "150 + 90", "H + H", "vt1 vt2", "Second Hit Crouchable on Block", null);
 
 -- Throw
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
-values ("Shoulder Throw (F + Throw)", 5, 3, 17, "KD", "KD", 130, 150, "T", null, null, null);
+values ("Shoulder Throw (F + Throw)", 5, 3, 17, "KD", "KD", 130, 150, "T", null, null, "https://media.giphy.com/media/jbEwXCU6nivtWhIU4E/giphy.gif");
 
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
-values ("Somersault Throw (B + Throw)", 5, 3, 17, "KD", "KD", 150, 200, "T", null, null, null);
+values ("Somersault Throw (B + Throw)", 5, 3, 17, "KD", "KD", 150, 200, "T", null, null, "https://media.giphy.com/media/ZxemTAebx6MTHP91PU/giphy.gif");
 
 -- V Skill
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
