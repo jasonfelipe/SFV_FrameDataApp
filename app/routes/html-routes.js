@@ -9,9 +9,12 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/page.html"));
+    res.sendFile(path.join(__dirname, "../public/main.html"));
   });
 
+  app.get("/ryu", function(req, res){
+    res.sendFile(path.join(__dirname, "../public/ryu.html"))
+  })
 //   // add route loads the add.html page,
 //   // where users can enter new characters to the db
 //   app.get("/add", function(req, res) {
