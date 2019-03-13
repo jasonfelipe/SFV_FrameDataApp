@@ -14,6 +14,7 @@ create table ryu (
     onBlock varchar(100),
     damage varchar (100),
     stun varchar(100),
+    moveType varchar(255),
     attackType varchar (100),
     cancels varchar(100),
     notes varchar(255),

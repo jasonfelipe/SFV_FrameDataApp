@@ -56,6 +56,12 @@ var Ryu = sequelize.define("ryu", {
         validate: {
             len: [1, 255]
         }
+    },
+    moveType: {
+        type: Sequelize.STRING,
+        validate: {
+            len: [1, 255]
+        }
     },   
     attackType:  {
         type: Sequelize.STRING,
