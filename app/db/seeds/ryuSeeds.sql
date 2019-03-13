@@ -43,7 +43,7 @@ values ("Somersault Throw (B + Throw)", 5, 3, 17, "KD", "KD", 150, 200, "T", nul
 
 -- V Skill
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
-values ("Mind's Eye (V Skill)", "3 (1)", 7, 32, null, null, null, null, null, null, "It's a parry. Cannot parry throws.", null);
+values ("Mind's Eye (V Skill)", "3 (1)", 7, 32, null, null, null, null, null, null, "It's a parry. Cannot parry throws.", "https://media.giphy.com/media/vbQguWLe4wsJwjLlC9/giphy.gif");
 
 -- V Reversal
 insert into ryu (move, startup, active, recovery, onHit, onBlock, damage, stun, attackType, cancels, notes, gif)
@@ -60,10 +60,10 @@ values ("Light Shoryuken", "3","12", "19 + 11", "KD", "-24", "100(60)", "150(100
 ("Medium Hadouken", "14", null, "33", "-1", "-6", "60", "100", "H", "su","Projectile.", null),
 ("Heavy Hadouken", "14", null, "33", "-1", "-6", "60", "100", "H", "su","Projectile.", null),
 ("EX Hadouken", "11", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H", "vt1 vt2","Projectile.", null),
-("Light Tatsumaki Senpukyaku", "10", "2", "18 + 12", "KD", "-10", "90", "150", "H", null, "Airborne frames 6-29 (Crouchable).", null),
-("Medium Tatsumaki Senpukyaku", "12", "2 (16) 2 ", "14 + 16", "KD", "-10", "100", "150", "H", null, "Airborne frames 7-47 (Crouchable). Lower-body Projectile Invincible frames 6-45.", null),
-("Hard Tatsumaki Senpukyaku", "14", "2 (16) 2 (14) 2", "14 + 17", "KD", "-10", "110", "150", "H", null, "Airborne frames 7-63 (Crouchable). Lower-body Projectile Invincible frames 9-61.", null),
-("EX Tatsumaki Senpukyaku", "10", "2 (4) 2 (5) 2 (3) 3 (3) 2", "11+15", "KD", "-19", "28 * 5", "150", "H", null, "Airborne frames 5-46 (Crouchable). Lower-body Projectile Invincible frames 7-36.", null),
+("Light Tatsumaki Senpukyaku", "10", "2", "18 + 12", "KD", "-10", "90", "150", "H", null, "Airborne frames 6-29 (Crouchable).", "https://media.giphy.com/media/9OZUYo2Clfj4m1INrn/giphy.gif"),
+("Medium Tatsumaki Senpukyaku", "12", "2 (16) 2 ", "14 + 16", "KD", "-10", "100", "150", "H", null, "Airborne frames 7-47 (Crouchable). Lower-body Projectile Invincible frames 6-45.", "https://media.giphy.com/media/lo5qJlHQHyOIu3m9L2/giphy.gif"),
+("Hard Tatsumaki Senpukyaku", "14", "2 (16) 2 (14) 2", "14 + 17", "KD", "-10", "110", "150", "H", null, "Airborne frames 7-63 (Crouchable). Lower-body Projectile Invincible frames 9-61.", "https://media.giphy.com/media/xUVh8ReGWoZWaUlz2I/giphy.gif"),
+("EX Tatsumaki Senpukyaku", "10", "2 (4) 2 (5) 2 (3) 3 (3) 2", "11+15", "KD", "-19", "28 * 5", "150", "H", null, "Airborne frames 5-46 (Crouchable). Lower-body Projectile Invincible frames 7-36.", "https://media.giphy.com/media/8cNhZdjPAeidRSVYz0/giphy.gif"),
 ("Light Joudan Sokutou Geri", "16", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H", "vt1 vt2", null, null),
 ("Medium Joudan Sokutou Geri", "18", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H", "vt1 vt2", null, null),
 ("Heavy Joudan Sokutou Geri", "20", null, "31", "KD", "2", "40 + 60", "0 + 150", "H + H", "vt1 vt2", null, null),
