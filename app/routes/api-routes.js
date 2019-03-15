@@ -3,8 +3,8 @@
 const Combos = require("../models/combos.js");
 
 const Ryu = require("../models/ryu.js");
-const Sequelize = require('sequelize')
-const Op = Sequelize.Op
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 
 // Routes
