@@ -13,7 +13,6 @@ module.exports = function (app) {
 
     // Get Ryu's Data
     app.get("/api/ryu", function (req, res) {
-
         // console.log(res);
         Ryu.findAll({}).then(function (results) {
             // results are available to us inside the .then
@@ -60,6 +59,20 @@ module.exports = function (app) {
     }).then(function(results){
       console.log(results);
     });
+
+
+    //API route for continuing a combo?
+  app.get('/api/ryu/combo', function(req,res){
+    console.log(req.body);
+    Ryu.findAll({
+      where: {
+        move: req.params.body
+      }
+    }).then(function(results){
+      console.log(results);
+      res.json(results);
+    });
+  });
 
 });
 

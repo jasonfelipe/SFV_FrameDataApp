@@ -24,15 +24,15 @@ const tableCreator = {
         let frameDataList = $('<ul>');
         let notesList = $('<ul>');
 
-            //Regex to get rid of the indent spaces in this Template Literal, but also keeps the new line breaks.
-            let frameDataCol = [`Start Up: ${item.startup}`,
-            `Active: ${item.active}`,
-            `Recovery: ${item.recovery}`,
-            `On Hit: ${item.onHit}`,
-            `On Block: ${item.onBlock}`,
-            `Damage: ${item.damage}`,
-            `Stun: ${item.stun}`,
-            `Attack Type: ${item.attackType}`]
+        //Regex to get rid of the indent spaces in this Template Literal, but also keeps the new line breaks.
+        let frameDataCol = [`Start Up: ${item.startup}`,
+        `Active: ${item.active}`,
+        `Recovery: ${item.recovery}`,
+        `On Hit: ${item.onHit}`,
+        `On Block: ${item.onBlock}`,
+        `Damage: ${item.damage}`,
+        `Stun: ${item.stun}`,
+        `Attack Type: ${item.attackType}`]
 
 
 
@@ -41,7 +41,7 @@ const tableCreator = {
         $(move).on('click', function () {
             $('#info').modal('toggle');
             $('#frame-data-col').empty();
-            $('#move-notes').empty();        
+            $('#move-notes').empty();
             $('.modal-title').html(item.move);
 
             frameDataList = $('<ul>')
@@ -52,7 +52,7 @@ const tableCreator = {
             if (item.notes) {
                 notesList = $('<ul>');
                 let moveNotes = item.notes.split('. ')
-                for (let b = 0; b < moveNotes.length; b++){
+                for (let b = 0; b < moveNotes.length; b++) {
                     notesList.append(`<li>${moveNotes[b]}</li>`);
                 }
                 $('#move-notes').append(notesList);
@@ -82,39 +82,50 @@ const tableCreator = {
     }
 }
 
-$('#main-page-link').on('click', function(){
+$('#main-page-link').on('click', function () {
     window.location = '/'
 });
 
-$('#combo-page-link').on('click', function(){
+$('#combo-page-link').on('click', function () {
     console.log("This goes to a combo page.")
 });
 
-$('#create-combo-button').on('click', function(){
+$('#create-combo-button').on('click', function () {
     $('#cbutton-section').empty()
     $('#combo-modal').modal('show');
     makeCombo()
 
 
+
 });
 
 
-function makeButtons(str){
+function makeButtons(str) {
     // console.log(str);
-    let button = $('<button class="get-gif">' + str + '</button>');
+    let button = $("<button>" + str + '</button>');
+    button.attr('class', 'move-button');
+    button.attr('id', str);
     $('#cbutton-section').append(button);
-
 }
 
-function makeCombo(){
-    $.get('/api/ryu/create', function(data){
+function makeCombo() {
+    $.get('/api/ryu/create', function (data) {
         data.forEach(element => {
             // console.log(element.move);
-            makeButtons(element.move)
+            makeButtons(element.move)      
+        });
+
+        $(document).on('click', ".move-button", function () {
+            let moveName = $(this).attr('id').trim();
+            console.log(moveName);
+             
         });
     });
 }
 
-$('.get-gif').on('click',function(){
-    console.log(this);
-});
+
+function contCombo(moveName){
+    $.get('/api/ryu/', function(data){
+        console.log(data);
+    });
+}
