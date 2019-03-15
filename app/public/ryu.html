@@ -36,7 +36,6 @@
         </table>
     </div>
 
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
 
     <div id='info' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
@@ -64,128 +63,39 @@
     </div>
 
     <div class="modal fade" id="combo-modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="combo-title">Create A Combo!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    <h5 class="modal-title" id="combo-title">Create A Combo!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                  ...
+                    <div class='row center' id='combo-view'>
+                        Here is your combo lol
+                    </div>
+                    <div class='row'>
+                        <div class='col-sm-6' id="cbutton-section">
+                            Combo Buttons go here
+                        </div>
+
+                        <div class='col-sm-6' id="cgif-section">
+                            Picture of gifs here
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" id='combo-submit' class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id='combo-submit' class="btn btn-primary">Submit</button>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script>
-
-        $.get("/api/ryu", function (data) {
-            // console.log(data);
-            //Our data is coming back as an array.
-            data.forEach(element =>
-                tableCreator.createRows(element)
-            );
-        });
-
-        const tableCreator = {
-            createRows: function (item) {
-                let tRow = $("<tr>");
-                let move = $('<td>').text(item.move);
-                let startup = $('<td>').text(item.startup);
-                let active = $('<td>').text(item.active);
-                let recovery = $('<td>').text(item.recovery);
-                let onHit = $('<td>').text(item.onHit);
-                let onBlock = $('<td>').text(item.onBlock);
-                let damage = $('<td>').text(item.damage);
-                let stun = $('<td>').text(item.stun);
-                let type = $('<td>').text(item.attackType);
-
-                tRow.append(move, startup, active, recovery, onHit, onBlock, damage, stun, type);
-                $('table').append(tRow);
-                let frameDataList = $('<ul>');
-                let notesList = $('<ul>');
-
-                    //Regex to get rid of the indent spaces in this Template Literal, but also keeps the new line breaks.
-                    let frameDataCol = [`Start Up: ${item.startup}`,
-                    `Active: ${item.active}`,
-                    `Recovery: ${item.recovery}`,
-                    `On Hit: ${item.onHit}`,
-                    `On Block: ${item.onBlock}`,
-                    `Damage: ${item.damage}`,
-                    `Stun: ${item.stun}`,
-                    `Attack Type: ${item.attackType}`]
-
-
-
-                this.advantageCheck(item.onHit);
-                $(move).css('cursor', 'pointer').attr('data-toggle', 'modal');
-                $(move).on('click', function () {
-                    $('#info').modal('toggle');
-                    $('#frame-data-col').empty();
-                    $('#move-notes').empty();        
-                    $('.modal-title').html(item.move);
-
-                    frameDataList = $('<ul>')
-                    for (let f = 0; f < frameDataCol.length; f++) {
-                        frameDataList.append(`<li>${frameDataCol[f]}</li>`);
-                    }
-
-                    $('#frame-data-col').append(frameDataList);
-                    if (item.notes) {
-                        notesList = $('<ul>');
-                        let moveNotes = item.notes.split('. ')
-                        for (let b = 0; b < moveNotes.length; b++){
-                            notesList.append(`<li>${moveNotes[b]}</li>`);
-                        }
-                        $('#move-notes').append(notesList);
-                    }
-
-                    $('#move-img').attr('src', 'movegif');
-
-                    if (item.gif) {
-                        $('#move-img').attr('src', item.gif);
-                    }
-
-                });
-            },
-            advantageCheck: function () {
-                // console.log(number);
-                $('table tr td').each(function () {
-                    if ($(this).text() <= -1) {
-                        $(this).css('background-color', '#FC9494');
-                    }
-                    if ($(this).text() <= -3) {
-                        $(this).css('background-color', '#FF2929');
-                    }
-
-                    if ($(this).text() == 'null') {
-                        $(this).text('~');
-                    }
-                });
-            }
-        }
-
-
-        $('#main-page-link').on('click', function(){
-            window.location = '/'
-        });
-
-        $('#combo-page-link').on('click', function(){
-            console.log("This goes to a combo page.")
-        });
-
-        $('#create-combo-button').on('click', function(){
-            console.log("Pops up modal")
-            $('#combo-modal').modal('show')
-        });
-    </script>
+    <script src="js/ryu.js"></script>
 </body>
 
 </html>
