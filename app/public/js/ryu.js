@@ -1,3 +1,5 @@
+let saveddata;
+
 $.get("/api/ryu", function (data) {
     // console.log(data);
     //Our data is coming back as an array.
@@ -112,20 +114,29 @@ function makeCombo() {
     $.get('/api/ryu/create', function (data) {
         data.forEach(element => {
             // console.log(element.move);
-            makeButtons(element.move)      
+            makeButtons(element.move)
         });
 
         $(document).on('click', ".move-button", function () {
             let moveName = $(this).attr('id').trim();
-            console.log(moveName);
-             
+
+            $.get('/api/ryu/combo', function (list) {
+                list.forEach(element => {
+                    if (moveName === element.move) {
+                        // console.log("This matched", element)
+                        let firstMoveHit = parseInt(element.onHit);
+
+                        list.forEach(nextMove => {
+                            let nextMoveStartUp = parseInt(nextMove.startup);
+                            if (firstMoveHit >= nextMoveStartUp) {
+                                console.log("Leftovers...", nextMove);
+                            }
+                        });
+                    }
+                });
+            })
+
         });
     });
 }
 
-
-function contCombo(moveName){
-    $.get('/api/ryu/', function(data){
-        console.log(data);
-    });
-}

@@ -11,31 +11,49 @@ const Op = Sequelize.Op;
 // =============================================================
 module.exports = function (app) {
 
-    // Get Ryu's Data
-    app.get("/api/ryu", function (req, res) {
-        // console.log(res);
-        Ryu.findAll({}).then(function (results) {
-            // results are available to us inside the .then
-            res.json(results);
-        });
-
+  // Get Ryu's Data
+  app.get("/api/ryu", function (req, res) {
+    // console.log(res);
+    Ryu.findAll({}).then(function (results) {
+      // results are available to us inside the .then
+      res.send(results);
     });
 
-    //route for getting normal moves to create a combo
-    app.get("/api/ryu/create", function(req, res){
-      Ryu.findAll({
-        where: {
-          onHit: {
-            [Op.gte]: 3
-          }
+  });
+
+
+  //route for getting normal moves to create a combo
+  app.get("/api/ryu/create", function (req, res) {
+    Ryu.findAll({
+      where: {
+        onHit: {
+          [Op.gte]: 3
         }
-      }).then(function(results){
-        res.json(results);
-      });
+      }
+    }).then(function (results) {
+      res.send(results);
     });
+  });
+
+  //API route for continuing a combo? Might not need it.
+  app.get('/api/ryu/combo/', function (req, res) {
+    console.log("Looking for stuff that is less than: ", req.params.frames);
+    Ryu.findAll({
+      where: {
+        moveType: {
+          [Op.not]: ["Aerial Normal", "unique"]
+        }
+      }
+    }).then(function (results) {
+      // console.log(results);
+      res.send(results);
+    });
+  });
+
+
 
   // Add a combo specifically to Ryu
-  app.post("/api/ryu/combos", function(req, res) {
+  app.post("/api/ryu/combos", function (req, res) {
 
     console.log("Combo Data:");
     console.log(req.body);
@@ -44,36 +62,25 @@ module.exports = function (app) {
       character: "ryu",
       movelist: req.body.combocreator,
       damage: req.body.damage
-    }).then(function(results) {
+    }).then(function (results) {
       // `results` here would be the newly created combo
       console.log("Combo successfully created!")
       res.end();
     });
   });
 
-  app.get("/api/ryu/combos", function(req,res){
+  app.get("/api/ryu/combos", function (req, res) {
     Combo.findAll({
       where: {
         character: "ryu"
       }
-    }).then(function(results){
-      console.log(results);
+    }).then(function (results) {
+      res.send(results)
     });
 
 
-    //API route for continuing a combo?
-  app.get('/api/ryu/combo', function(req,res){
-    console.log(req.body);
-    Ryu.findAll({
-      where: {
-        move: req.params.body
-      }
-    }).then(function(results){
-      console.log(results);
-      res.json(results);
-    });
+
+
   });
-
-});
 
 };
