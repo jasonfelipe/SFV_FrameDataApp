@@ -41,7 +41,7 @@ module.exports = function (app) {
     Ryu.findAll({
       where: {
         moveType: {
-          [Op.not]: ["Aerial Normal", "unique"]
+          [Op.not]: ["Aerial Normal", "unique", "throw"]
         }
       }
     }).then(function (results) {

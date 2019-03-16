@@ -96,9 +96,6 @@ $('#create-combo-button').on('click', function () {
     $('#cbutton-section').empty()
     $('#combo-modal').modal('show');
     makeCombo()
-
-
-
 });
 
 
@@ -119,24 +116,46 @@ function makeCombo() {
 
         $(document).on('click', ".move-button", function () {
             let moveName = $(this).attr('id').trim();
-
-            $.get('/api/ryu/combo', function (list) {
-                list.forEach(element => {
-                    if (moveName === element.move) {
-                        // console.log("This matched", element)
-                        let firstMoveHit = parseInt(element.onHit);
-
-                        list.forEach(nextMove => {
-                            let nextMoveStartUp = parseInt(nextMove.startup);
-                            if (firstMoveHit >= nextMoveStartUp) {
-                                console.log("Leftovers...", nextMove);
-                            }
-                        });
-                    }
-                });
-            })
-
+            contCombo(moveName);
+            $('#combo-view').empty();
         });
     });
 }
 
+function contCombo(moveName){
+    let comboArray = [];
+    $.get('/api/ryu/combo', function (list) {
+        list.forEach(element => {
+            if (moveName === element.move) {
+                // console.log("This matched", element)
+                let moveHit = parseInt(element.onHit);
+                let moveDamage = parseInt(element.damage);
+
+
+
+                $('#cbutton-section').empty();
+    
+                
+                
+                if (comboArray.length > 3) {
+                    list.forEach(nextMove => {
+                        if(moveHit > 3){
+                            let nextMoveStartUp = parseInt(nextMove.startup);
+                            if (moveHit >= nextMoveStartUp) {
+                                // console.log("Leftovers...", nextMove);
+                                makeButtons(nextMove.move);  
+                            }
+    
+                        }else{
+                            return console.log('Combo Finished');
+                        }
+                            
+                    });
+                }
+
+            $('#combo-view').text(comboArray);                
+                
+            }
+        });
+    });
+}
